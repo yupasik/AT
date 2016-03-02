@@ -32,16 +32,19 @@ def test_case1(app):
     app.capture.start()
     app.stb.default_settings()
     app.stb.push(["exit"])
-    assert app.grabber.check_result(1) > 70
+    result = app.grabber.check_result(1)
+    assert result > 70
 
 
 def test_case2(app):
     app.stb.push(["menu 1 5000"])
-    assert app.grabber.check_result(2) > 70
+    result = app.grabber.check_result(2)
+    assert result > 70
 
 
 def test_case3(app):
     app.stb.push(["ok 1 5000", "ok 1 2000"])
-    assert app.grabber.check_result(3) > 70
+    result = app.grabber.check_result(3)
+    assert result > 70
 
 
