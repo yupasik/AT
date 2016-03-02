@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+__author__ = 'Yuri.Perin'
+
 import os
 import sys
 modeules_path = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))

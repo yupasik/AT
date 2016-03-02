@@ -1,5 +1,6 @@
-__author__ = 'Yuri.Perin'
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+__author__ = 'Yuri.Perin'
 import serial
 from time import sleep
 import os

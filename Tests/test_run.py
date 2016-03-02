@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+__author__ = 'Yuri.Perin'
+
 import serial
 import os
 from json import load, dump

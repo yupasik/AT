@@ -1,5 +1,6 @@
-__author__ = 'Yuri.Perin'
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+__author__ = 'Yuri.Perin'
 
 import urllib2
 from urlgrabber.keepalive import HTTPHandler
