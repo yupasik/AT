@@ -1,5 +1,6 @@
-__author__ = 'Yuri.Perin'
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+__author__ = 'Yuri.Perin'
 
 import urllib2
 from urlgrabber.keepalive import HTTPHandler
@@ -32,29 +33,34 @@ class Modulator:
         # Open TS file
         ts_location = "F:\\RT-RK\\Streams"
         self.client.service.OpenFile(os.path.join(ts_location, stream))
-        self.app.write_log("Open stream: %s" % stream)  # logger - Open stream
+        self.app.write_log("[MOD]   Open stream: %s" % stream)  # logger - Open stream
+        print("[MOD]   Open stream: %s" % stream)  # print - Open stream
 
     def play(self):
         # Open TS file
         self.client.service.SetPlayoutState(1)
-        self.app.write_log("Play stream")  # logger - Play stream
+        self.app.write_log("[MOD]   Play stream")  # logger - Play stream
+        print("[MOD]   Play stream")  # print - Play stream
 
     def pause(self):
         # Open TS file
         self.client.service.SetPlayoutState(0)
-        self.app.write_log("Pause stream")  # logger - Pause stream
+        self.app.write_log("[MOD]   Pause stream")  # logger - Pause stream
+        print("[MOD]   Pause stream")  # print - Pause stream
 
     def stop(self):
         # Open TS file
         self.client.service.SetPlayoutState(2)
-        self.app.write_log("Stop stream")  # logger - Stop stream
+        self.app.write_log("[MOD]   Stop stream")  # logger - Stop stream
+        print("[MOD]   Stop stream")  # print - Stop stream
 
     def set_freq(self, frequency):
         # Set frequency in Hz
         RfPars = self.client.service.GetRfPars()["RfPars"]
         RfPars["Frequency"] = long(frequency*1000000)
         self.client.service.SetRfPars(RfPars=RfPars)
-        self.app.write_log("Set frequency %s" % frequency)  # logger - Set Frequency
+        self.app.write_log("[MOD] Set frequency %s" % frequency)  # logger - Set Frequency
+        print("[MOD]   Set frequency %s" % frequency)  # print - Set Frequency
 
     def set_standard(self, dvb):
         ModPars = self.client.service.GetModPars()["ModPars"]
@@ -67,7 +73,8 @@ class Modulator:
             ModPars["ModType"] = 32
             ModPars["ParXtra1"] = 1792
         self.client.service.SetModPars(ModPars=ModPars)
-        self.app.write_log("Set DVB standard: %s" % dvb)  # logger - Set DVB standard
+        self.app.write_log("[MOD]   Set DVB standard: %s" % dvb)  # logger - Set DVB standard
+        print("[MOD]   Set DVB standard: %s" % dvb)  # print - Set DVB standard
 
     def set_modulation(self, modulation):
         ModPars = self.client.service.GetModPars()["ModPars"]
@@ -78,13 +85,15 @@ class Modulator:
         if modulation == "QPSK" and self.client.service.GetRfPars()["ModPars"]["ParXtra2"] == -1:
             ModPars["ModType"] = 0
         self.client.service.SetModPars(ModPars=ModPars)
-        self.app.write_log("Set Modulation: %s" % modulation)  # logger - Set Modulation
+        self.app.write_log("[MOD]   Set Modulation: %s" % modulation)  # logger - Set Modulation
+        print("[MOD]   Set Modulation: %s" % modulation)  # print - Set Modulation
 
     def set_symbolrate(self, symbolrate):
         ModPars = self.client.service.GetModPars()["ModPars"]
         ModPars["SymRate"] = symbolrate*1000
         self.client.service.SetModPars(ModPars=ModPars)
-        self.app.write_log("Set symbolrate: %s" % symbolrate)  # logger - Set symbolrate
+        self.app.write_log("[MOD]   Set symbolrate: %s" % symbolrate)  # logger - Set symbolrate
+        print("[MOD]   Set symbolrate: %s" % symbolrate)  # print - Set symbolrate
 
     def set_fec(self, fec):
         fec_dict = {"1/2": 0,
@@ -102,7 +111,8 @@ class Modulator:
         ModPars = self.client.service.GetModPars()["ModPars"]
         ModPars["ParXtra0"] = fec_dict[fec]
         self.client.service.SetModPars(ModPars=ModPars)
-        self.app.write_log("Set FEC: %s" % fec)  # logger - Set FEC
+        self.app.write_log("[MOD]   Set FEC: %s" % fec)  # logger - Set FEC
+        print("[MOD]   Set FEC: %s" % fec)  # print - Set FEC
 
     def set_options(self, dvb="DVBS", fec="3/4", frequency=1476, symbolrate=27500, modulation="QPSK"):
         ModPars = self.client.service.GetModPars()["ModPars"]
@@ -135,5 +145,10 @@ class Modulator:
         ModPars["ParXtra0"] = fec_dict[fec]
         self.client.service.SetModPars(ModPars=ModPars)
         self.client.service.SetRfPars(RfPars=RfPars)
-        self.app.write_log("Set Modulator parameters: standard - %s, FEC - %s, frequency - %s, symbolrate - %s, "
+        self.app.write_log("[MOD]   Set Modulator parameters: standard - %s, FEC - %s, frequency - %s, symbolrate - %s, "
                            "modulation - %s" % (dvb, fec, frequency, symbolrate, modulation))  # logger - Set Modulator parameters
+        print("[MOD]   Set Modulator parameters: standard - %s, FEC - %s, frequency - %s, symbolrate - %s, "
+              "modulation - %s" % (dvb, fec, frequency, symbolrate, modulation))  # print - Set Modulator parameters
+
+    def close_session(self):
+        self.client.service.OpenSession()

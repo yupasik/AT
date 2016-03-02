@@ -82,17 +82,17 @@ class FrameStorage:
 
     def __init__(self, app):
         self.app = app
-        self._frame = None
+        self.frame = None
         with open(os.path.join(self.app.domain, "Configuration", "config_syst.json")) as info:
             self._chip = load(info)["CHIP"][self.app.stb_model]
         self._reference_dir = os.path.join(self.app.domain, "RefPictures", self._chip, self.app.test, self.app.testscript)
 
     def set(self, ret, frame):
         if ret:
-            self._frame = frame
+            self.frame = frame
 
     def get(self):
-        return self._frame
+        return self.frame
 
     def rgb2gray_cv(self, image):
         rgb = cv2.imread(image)
@@ -108,7 +108,7 @@ class FrameStorage:
         rep.save(report)
 
     def check_result(self, testcase):
-        snapshot = self._frame
+        snapshot = self.frame
         ref_picture = os.path.join(self._reference_dir, "%s_%s.bmp" % (self.app.testscript, testcase))
         test_picture = os.path.join(self.app.domain, "Temp", "DUT_snapshot.bmp")
         cv2.imwrite(test_picture, snapshot)
@@ -135,6 +135,10 @@ class FrameStorage:
                             report=self.app.report_file,
                             result=conclusion)
         self.app.write_log("Fill the xlsx report")  # logger - fill the xlsx report
+        if conclusion == "SUCCESS":
+            return True
+        else:
+            return False
 
 
 class Capture:
