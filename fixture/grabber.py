@@ -128,7 +128,7 @@ class FrameStorage:
                 copy(test_picture, os.path.join(self.app.report_dir, "%s_%s.bmp" % (self.app.testscript, testcase)))
                 cv2.imwrite(os.path.join(self.app.report_dir, "%s_%s_dif.jpg" % (self.app.testscript, testcase)), dif)
             except:
-                return
+                return result
         self.app.write_log("Check the comparison result: %s" % conclusion)  # logger - check the comparison result: SUCCESS/FAILED
         self.report_to_xlsx(testcase=testcase,
                             col=self.app.testintex,
