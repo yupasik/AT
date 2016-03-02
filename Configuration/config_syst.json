@@ -1,0 +1,26 @@
+{
+	"COM": "COM3",
+	"SERIAL": "COM3",
+	"CHIP": {
+		"A230": "ST",
+		"E212": "ST",
+		"B210": "ST",
+		"B211": "ST",
+		"B212": "ST",
+		"C211": "ST",
+		"U210": "ST",
+		"U210CI": "ST",
+		"U210CI+": "ST",
+		"U510": "Mstar",
+		"B520": "Mstar",
+		"B521": "Mstar",
+		"B522": "Mstar",
+		"E501": "Mstar",
+		"E502": "Mstar",
+		"E520": "Mstar",
+		"E521": "Mstar",
+		"E530": "Mstar",
+		"E531": "Mstar",
+		"C591": "Mstar"
+	}
+}

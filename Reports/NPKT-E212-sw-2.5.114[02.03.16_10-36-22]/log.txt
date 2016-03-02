@@ -1,0 +1,29 @@
+02.03.2016 10:36:22 - TEST STARTED
+02.03.2016 10:36:42 - START manual_upd1
+02.03.2016 10:36:42 - [GRAB]  Launch Grabber. Start capturing
+02.03.2016 10:36:42 - TEST CASE 1
+02.03.2016 10:38:30 - [UART]  Reset STB to default settings
+02.03.2016 10:38:30 - [UART]  Push [exit]
+02.03.2016 10:38:31 - [GRAB]  Take DUT_snapshot.bmp for testcase 1
+02.03.2016 10:38:31 - [GRAB]  Result = 100
+02.03.2016 10:38:31 - [GRAB]  Check the comparison result: SUCCESS
+02.03.2016 10:38:31 - [EXCEL] Fill the xlsx report
+02.03.2016 10:38:31 - TEST CASE 2
+02.03.2016 10:38:31 - [UART]  Push [menu]
+02.03.2016 10:38:34 - [GRAB]  Take DUT_snapshot.bmp for testcase 2
+02.03.2016 10:38:35 - [GRAB]  Result = 100
+02.03.2016 10:38:35 - [GRAB]  Check the comparison result: SUCCESS
+02.03.2016 10:38:35 - [EXCEL] Fill the xlsx report
+02.03.2016 10:38:35 - TEST CASE 3
+02.03.2016 10:39:39 - [UART]  Power reboot STB
+02.03.2016 10:39:42 - [UART]  Open settings application
+02.03.2016 10:39:42 - [UART]  Push [exit]
+02.03.2016 10:39:44 - [UART]  Push [menu]
+02.03.2016 10:39:47 - [UART]  Push [ok]
+02.03.2016 10:39:49 - [UART]  Push [ok]
+02.03.2016 10:39:52 - [GRAB]  Take DUT_snapshot.bmp for testcase 3
+02.03.2016 10:39:52 - [GRAB]  Result = 3
+02.03.2016 10:39:52 - [GRAB]  Check the comparison result: FAILED
+02.03.2016 10:39:52 - [EXCEL] Fill the xlsx report
+02.03.2016 10:39:52 - [GRAB]  Turn off Grabber. Stop capturing
+02.03.2016 10:39:52 - STOP manual_upd1
