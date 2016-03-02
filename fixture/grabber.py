@@ -135,10 +135,7 @@ class FrameStorage:
                             report=self.app.report_file,
                             result=conclusion)
         self.app.write_log("Fill the xlsx report")  # logger - fill the xlsx report
-        if conclusion == "SUCCESS":
-            return True
-        else:
-            return False
+        return result
 
 
 class Capture:

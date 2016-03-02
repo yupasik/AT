@@ -1,11 +1,11 @@
 {
-  "report_dir": "D:\\AT\\Reports\\NPKT-E212-sw-2.5.114[02.03.16_13-20-06]", 
-  "report_file": "D:\\AT\\Reports\\NPKT-E212-sw-2.5.114[02.03.16_13-20-06]\\NPKT-E212-sw-2.5.114[02.03.16_13-20-06].xlsx", 
+  "report_dir": "D:\\AT\\Reports\\NPKT-E212-sw-2.5.114[02.03.16_15-23-43]", 
+  "report_file": "D:\\AT\\Reports\\NPKT-E212-sw-2.5.114[02.03.16_15-23-43]\\NPKT-E212-sw-2.5.114[02.03.16_15-23-43].xlsx", 
   "STB": "E212", 
-  "report_name": "NPKT-E212-sw-2.5.114[02.03.16_13-20-06]", 
+  "report_name": "NPKT-E212-sw-2.5.114[02.03.16_15-23-43]", 
   "current_script": "test_script1", 
   "version": "2.5.114", 
   "test_status": "executing", 
-  "log_file": "D:\\AT\\Reports\\NPKT-E212-sw-2.5.114[02.03.16_13-20-06]\\log.txt", 
+  "log_file": "D:\\AT\\Reports\\NPKT-E212-sw-2.5.114[02.03.16_15-23-43]\\log.txt", 
   "COM": "COM3"
 }
