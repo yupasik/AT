@@ -277,3 +277,33 @@
 03.03.2016 11:21:01 - [GRAB]  Check the comparison result: FAILED
 03.03.2016 11:21:01 - [EXCEL] Fill the xlsx report
 03.03.2016 11:21:01 - [GRAB]  Turn off Grabber. Stop capturing
+03.03.2016 11:33:30 - START test_script1
+03.03.2016 11:33:30 - [GRAB]  Launch Grabber. Start capturing
+03.03.2016 11:34:34 - [UART]  Reset STB to default settings
+03.03.2016 11:34:34 - [UART]  Push [exit]
+03.03.2016 11:34:35 - [GRAB]  Take DUT_snapshot.bmp for testcase 1
+03.03.2016 11:34:35 - [GRAB]  Result = 0
+03.03.2016 11:34:35 - [GRAB]  Check the comparison result: FAILED
+03.03.2016 11:34:35 - [EXCEL] Fill the xlsx report
+03.03.2016 11:34:35 - [UART]  Push [ok]
+03.03.2016 11:34:40 - [UART]  Push [ok]
+03.03.2016 11:34:42 - [GRAB]  Take DUT_snapshot.bmp for testcase 3
+03.03.2016 11:34:42 - [GRAB]  Result = 0
+03.03.2016 11:34:42 - [GRAB]  Check the comparison result: FAILED
+03.03.2016 11:34:42 - [EXCEL] Fill the xlsx report
+03.03.2016 11:34:42 - [GRAB]  Turn off Grabber. Stop capturing
+03.03.2016 12:08:42 - START test_script1
+03.03.2016 12:08:42 - [GRAB]  Launch Grabber. Start capturing
+03.03.2016 12:09:48 - [UART]  Reset STB to default settings
+03.03.2016 12:09:48 - [UART]  Push [exit]
+03.03.2016 12:09:49 - [GRAB]  Take DUT_snapshot.bmp for testcase 1
+03.03.2016 12:09:49 - [GRAB]  Result = 0
+03.03.2016 12:09:49 - [GRAB]  Check the comparison result: FAILED
+03.03.2016 12:09:49 - [EXCEL] Fill the xlsx report
+03.03.2016 12:09:49 - [UART]  Push [ok]
+03.03.2016 12:09:54 - [UART]  Push [ok]
+03.03.2016 12:09:56 - [GRAB]  Take DUT_snapshot.bmp for testcase 3
+03.03.2016 12:09:56 - [GRAB]  Result = 0
+03.03.2016 12:09:56 - [GRAB]  Check the comparison result: FAILED
+03.03.2016 12:09:56 - [EXCEL] Fill the xlsx report
+03.03.2016 12:09:56 - [GRAB]  Turn off Grabber. Stop capturing

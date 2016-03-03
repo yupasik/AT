@@ -39,7 +39,7 @@ def test_case1(app):
         assert 100 > 70
 
 
-@pytest.allure.step('test allure step')
+@allure.step('allure steps ch')
 def test_case2(app):
     app.stb.push(["menu 1 5000"])
     app.grabber.check_result(2)
