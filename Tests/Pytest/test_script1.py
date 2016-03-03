@@ -28,6 +28,7 @@ def app(request):
     return fixture
 
 
+@pytest.allure.severity(pytest.allure.severity_level.CRITICAL)
 def test_case1(app):
     app.capture.start()
     with pytest.allure.step("default settings"):
@@ -38,7 +39,7 @@ def test_case1(app):
         assert 100 > 70
 
 
-@pytest.allure.step('test allure step for 2 case')
+@pytest.allure.step('test allure step')
 def test_case2(app):
     app.stb.push(["menu 1 5000"])
     app.grabber.check_result(2)
