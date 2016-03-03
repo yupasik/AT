@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 __author__ = 'Yuri.Perin'
 
@@ -52,7 +53,7 @@ class Grabber:
     """GRABBER"""
     def __init__(self, app):
         self.app = app
-        self.cap = cv2.VideoCapture(1)
+        self.cap = cv2.VideoCapture(0)
         sleep(1)
         self.cap.set(3, 720)
         self.cap.set(4, 576)
@@ -89,15 +90,15 @@ class FrameStorage:
 
     def set(self, ret, frame):
         if ret:
-            self.frame = frame
+            self._frame = frame
 
     def get(self):
-        return self.frame
+        return self._frame
 
     def rgb2gray_cv(self, image):
         rgb = cv2.imread(image)
         r, g, b = rgb[:, :, 0], rgb[:, :, 1], rgb[:, :, 2]
-        gray = 0.299 * r + 0.587 * g + 0.114 * b
+        gray = 0.21 * r + 0.72 * g + 0.07 * b
         return gray
 
     def report_to_xlsx(self, testcase, col, report, result):
@@ -108,19 +109,21 @@ class FrameStorage:
         rep.save(report)
 
     def check_result(self, testcase):
-        snapshot = self.frame
+        snapshot = self._frame
         ref_picture = os.path.join(self._reference_dir, "%s_%s.bmp" % (self.app.testscript, testcase))
         test_picture = os.path.join(self.app.domain, "Temp", "DUT_snapshot.bmp")
         cv2.imwrite(test_picture, snapshot)
-        self.app.write_log("Take DUT_snapshot.bmp for testcase %s" % testcase)  # logger - take the snapshot
+        self.app.write_log("[GRAB]  Take DUT_snapshot.bmp for testcase %s" % testcase)  # logger - take the snapshot
+        print("[GRAB]  Take DUT_snapshot.bmp for testcase %s" % testcase)  # print - take the snapshot
         try:
             dif = abs(self.rgb2gray_cv(ref_picture) - self.rgb2gray_cv(test_picture))
             result = int((255.0 - dif.max())/255*100)
         except:
             result = 0
             dif = None
-        self.app.write_log("Result = %s" % result)  # logger - fill the xlsx report
-        if result > 70:
+        self.app.write_log("[GRAB]  Result = %s" % result)  # logger - fill the xlsx report
+        print("[GRAB]  Result = %s" % result)  # print - fill the xlsx report
+        if result > 90:
             conclusion = "SUCCESS"
         else:
             conclusion = "FAILED"
@@ -129,12 +132,14 @@ class FrameStorage:
                 cv2.imwrite(os.path.join(self.app.report_dir, "%s_%s_dif.jpg" % (self.app.testscript, testcase)), dif)
             except:
                 return result
-        self.app.write_log("Check the comparison result: %s" % conclusion)  # logger - check the comparison result: SUCCESS/FAILED
+        self.app.write_log("[GRAB]  Check the comparison result: %s" % conclusion)  # logger - check the comparison result: SUCCESS/FAILED
+        print("[GRAB]  Check the comparison result: %s" % conclusion)  # print - check the comparison result: SUCCESS/FAILED
         self.report_to_xlsx(testcase=testcase,
                             col=self.app.testintex,
                             report=self.app.report_file,
                             result=conclusion)
-        self.app.write_log("Fill the xlsx report")  # logger - fill the xlsx report
+        self.app.write_log("[EXCEL] Fill the xlsx report")  # logger - fill the xlsx report
+        print("[EXCEL] Fill the xlsx report")  # print - fill the xlsx report
         return result
 
 
@@ -143,17 +148,19 @@ class Capture:
         self.app = app
         self._thread = KThread(target=self._loop)
         self._handlers = []
-        self.cap = cv2.VideoCapture(1)
+        self.cap = cv2.VideoCapture(0)
         self.cap.set(3, 720)
         self.cap.set(4, 576)
 
     def start(self):
         self._thread.start()
-        self.app.write_log("Launch Grabber. Start capturing")  # logger - Launch Grabber. Start capturing
+        self.app.write_log("[GRAB]  Launch Grabber. Start capturing")  # logger - Launch Grabber. Start capturing
+        print("[GRAB]  Launch Grabber. Start capturing")  # print - Launch Grabber. Start capturing
 
     def stop(self):
         self._thread.kill()
-        self.app.write_log("Turn off Grabber. Stop capturing")  # logger - Turn off Grabber. Stop capturing
+        self.app.write_log("[GRAB]  Turn off Grabber. Stop capturing")  # logger - Turn off Grabber. Stop capturing
+        print("[GRAB]  Turn off Grabber. Stop capturing")  # print - Turn off Grabber. Stop capturing
 
     def _loop(self):
         while 1:
@@ -163,4 +170,9 @@ class Capture:
 
     def register_handler(self, handler):
         self._handlers.append(handler)
+
+    def close_session(self):
+        self._handlers = []
+        self.cap.release()
+
 
