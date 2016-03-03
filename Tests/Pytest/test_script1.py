@@ -30,13 +30,14 @@ def app(request):
 
 def test_case1(app):
     app.capture.start()
-    app.stb.default_settings()
+    with pytest.allure.step("default settings"):
+        app.stb.default_settings()
     app.stb.push(["exit"])
     app.grabber.check_result(1)
     with pytest.allure.step("check testcase 1"):
         assert 100 > 70
 
-
+@pytest.allure.step('test allure step for 2 case')
 def test_case2(app):
     app.stb.push(["menu 1 5000"])
     app.grabber.check_result(2)
