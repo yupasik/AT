@@ -1,6 +1,7 @@
 from Devices.application import Application
 import sys
 import pytest
+import allure
 
 
 test = "Pytest"
