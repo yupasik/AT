@@ -36,7 +36,6 @@ class Application:
         self.capture.register_handler(self.grabber.set)
         self.write_log("START %s" % self.testscript)
         print("START %s" % self.testscript)
-        self.capture.start()
 
     def write_log(self, info):
         date_time = strftime("%d.%m.%Y %H:%M:%S", localtime())
