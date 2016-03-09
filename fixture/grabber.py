@@ -136,7 +136,7 @@ class FrameStorage:
                 cv2.imwrite(os.path.join(self.app.report_dir, "%s_%s_dif.jpg" % (self.app.testscript, testcase)), dif)
             except:
                 self.compare_result = result
-                return
+                return self.compare_result
         self.app.write_log("[GRAB]  Check the comparison result: %s" % conclusion)  # logger - check the comparison result: SUCCESS/FAILED
         print("[GRAB]  Check the comparison result: %s" % conclusion)  # print - check the comparison result: SUCCESS/FAILED
         self.report_to_xlsx(testcase=testcase,
@@ -146,6 +146,7 @@ class FrameStorage:
         self.app.write_log("[EXCEL] Fill the xlsx report")  # logger - fill the xlsx report
         print("[EXCEL] Fill the xlsx report")  # print - fill the xlsx report
         self.compare_result = result
+        return self.compare_result
 
 
 class Capture:

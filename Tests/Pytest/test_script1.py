@@ -40,23 +40,23 @@ def test_case1(app):
     with pytest.allure.step("default settings"):
         app.stb.default_settings()
     app.stb.push(["exit"])
-    app.grabber.check_result(1)
+    result = app.grabber.check_result(1)
     with pytest.allure.step("check testcase 1"):
-        assert app.grabber.compare_result > 70
+        assert result > 70
 
 
 def test_case2(app):
     app.stb.push(["menu 1 5000"])
-    app.grabber.check_result(2)
+    result = app.grabber.check_result(2)
     with pytest.allure.step("check testcase 2"):
-        assert app.grabber.compare_result < 70
+        assert result < 70
 
 
 @pytest.allure.issue('https://jira.exset.com/browse/DTI-1000')
 def test_case3(app):
     app.stb.push(["ok 1 5000", "ok 1 2000"])
-    app.grabber.check_result(3)
+    result = app.grabber.check_result(3)
     with pytest.allure.step("check testcase 3"):
-        assert app.grabber.compare_result > 70
+        assert result > 70
 
 
