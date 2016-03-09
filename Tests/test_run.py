@@ -11,8 +11,21 @@ from shutil import copy
 import serial.tools.list_ports as pl
 from time import strftime, localtime
 
+"""
+This module uses to:
+Check STB model and version
+Create report folder
+Create report xlsx file
+Create log file
+Fill test_config.json file with actual test info
+"""
+
 
 def where_uart():
+    """
+    Scanning COM ports to determine UART port
+    :return: COM-UART port
+    """
     port = serial.Serial()
     uart_port = ''
     ports = list(pl.comports())
@@ -30,6 +43,11 @@ def where_uart():
 
 
 def read_info(com_port):
+    """
+    Receiving information about STB info from COM-UART port
+    :param com_port:
+    :return: tuple with STB model and STB version
+    """
     port = serial.Serial(port=com_port, baudrate=115200, timeout=0.1)
     model_list = []
     version_list = []

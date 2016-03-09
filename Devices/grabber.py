@@ -69,6 +69,9 @@ class Grabber:
 
 
 class Display:
+    """
+    Receiving frames from storage for displaying
+    """
     def __init__(self, app):
         self.app = app
 
@@ -109,6 +112,12 @@ class FrameStorage:
         rep.save(report)
 
     def check_result(self, testcase):
+        """
+        Receiving current frame (snapshot) from storage
+        Comparing this frame with reference, generating DIF picture and calculating result
+        Reporting conclusion to XLSX report file
+        Copying failed frames to the report directory
+        """
         snapshot = self._frame
         ref_picture = os.path.join(self._reference_dir, "%s_%s.bmp" % (self.app.testscript, testcase))
         test_picture = os.path.join(self.app.domain, "Temp", "DUT_snapshot.bmp")
@@ -143,6 +152,10 @@ class FrameStorage:
 
 
 class Capture:
+    """
+    Class for creating Capture obj:
+    Capturing frames from Video Capture card and transmit them to the handlers
+    """
     def __init__(self, app):
         self.app = app
         self._thread = KThread(target=self._loop)
@@ -162,15 +175,24 @@ class Capture:
         print("[GRAB]  Turn off Grabber. Stop capturing")  # print - Turn off Grabber. Stop capturing
 
     def _loop(self):
+        """
+        Reading frame and transmit it to all handlers
+        """
         while 1:
             ret, frame = self.cap.read()
             for handler in self._handlers:
                 handler(ret, frame)
 
     def register_handler(self, handler):
+        """
+        Add handlers
+        """
         self._handlers.append(handler)
 
     def close_session(self):
+        """
+        Finalizer of Capture obj
+        """
         self._handlers = []
         self.cap.release()
 

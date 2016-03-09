@@ -9,6 +9,7 @@ from json import load, dump
 class Application:
 
     testcase = None
+    result = None
 
     def __init__(self, test, testintex, testscript):
         self.domain = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

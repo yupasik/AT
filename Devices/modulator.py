@@ -11,6 +11,11 @@ import os.path
 
 
 class PersistentTransport(HttpTransport):
+    """
+    Creating keep-alive transport for SOAP Client
+    Important: you have to use URLGrabber python module with version 3.9.0:
+    https://jira.exset.com/secure/attachment/39977/urlgrabber-3.9.0.tar.gz
+    """
     def __init__(self):
         HttpTransport.__init__(self)
         self._handler = HTTPHandler()
@@ -20,7 +25,10 @@ class PersistentTransport(HttpTransport):
 
 
 class Modulator:
-    """Modulator"""
+    """
+    Class for creating Modulator obj:
+    Creating SOAP Client using WSDL file
+    """
     def __init__(self, app, n):
         self.app = app
         self.N = n

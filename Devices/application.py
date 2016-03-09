@@ -7,6 +7,10 @@ from json import load, dump
 
 
 class Application:
+    """
+    Class for creating Test Environment
+    Includes Modulator, Grabber, UART objects
+    """
 
     testcase = None
 

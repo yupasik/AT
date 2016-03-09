@@ -13,6 +13,10 @@ fixture = None
 
 @pytest.fixture(scope="module", autouse=True)
 def app(request):
+    """
+    Main fixture of test environment
+    :return: app fixture
+    """
     global fixture
     global test
     global testintex
@@ -23,6 +27,9 @@ def app(request):
                               testscript=testscript)
 
     def fin():
+        """
+        Tear Down method for app fixture
+        """
         fixture.capture.stop()
         fixture.capture.close_session()
     request.addfinalizer(fin)
@@ -37,14 +44,14 @@ def test_case1(app):
     app.stb.push(["exit"])
     app.grabber.check_result(1)
     with pytest.allure.step("check testcase 1"):
-        assert 100 > 70
+        assert app.result > 70
 
 
 def test_case2(app):
     app.stb.push(["menu 1 5000"])
     app.grabber.check_result(2)
     with pytest.allure.step("check testcase 2"):
-        assert 100 < 70
+        assert app.result < 70
 
 
 @pytest.allure.issue('https://jira.exset.com/browse/DTI-1000')
@@ -52,6 +59,6 @@ def test_case3(app):
     app.stb.push(["ok 1 5000", "ok 1 2000"])
     app.grabber.check_result(3)
     with pytest.allure.step("check testcase 3"):
-        assert 100 > 70
+        assert app.result > 70
 
 
