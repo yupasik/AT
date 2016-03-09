@@ -87,7 +87,7 @@ class FrameStorage:
         with open(os.path.join(self.app.domain, "Configuration", "config_syst.json")) as info:
             self._chip = load(info)["CHIP"][self.app.stb_model]
         self._reference_dir = os.path.join(self.app.domain, "RefPictures", self._chip, self.app.test, self.app.testscript)
-        self.result
+        self.result = None
 
     def set(self, ret, frame):
         if ret:
