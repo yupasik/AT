@@ -10,7 +10,7 @@ testscript = "test_script1"
 stream = "036E_LCN-25_20140418a.ts"
 
 
-@pytest.fixture(scope="module", autouse=True)
+@pytest.fixture(scope="module")
 def app(request):
     """
     Main fixture of test environment
@@ -41,22 +41,19 @@ def test_case1(app):
         app.stb.default_settings()
     app.stb.push(["exit"])
     result = app.grabber.check_result(1)
-    with pytest.allure.step("check testcase 1"):
-        assert result > 70
+    assert result > 70
 
 
 def test_case2(app):
     app.stb.push(["menu 1 5000"])
     result = app.grabber.check_result(2)
-    with pytest.allure.step("check testcase 2"):
-        assert result < 70
+    assert result < 70
 
 
 @pytest.allure.issue('https://jira.exset.com/browse/DTI-1000')
 def test_case3(app):
     app.stb.push(["ok 1 5000", "ok 1 2000"])
     result = app.grabber.check_result(3)
-    with pytest.allure.step("check testcase 3"):
-        assert result > 70
+    assert result > 70
 
 
