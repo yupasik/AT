@@ -81,6 +81,8 @@ class Display:
 
 class FrameStorage:
 
+    result = None
+
     def __init__(self, app):
         self.app = app
         self.frame = None
