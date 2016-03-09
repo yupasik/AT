@@ -124,6 +124,7 @@ class FrameStorage:
         except:
             result = 0
             dif = None
+        self.compare_result = result
         self.app.write_log("[GRAB]  Result = %s" % result)  # logger - fill the xlsx report
         print("[GRAB]  Result = %s" % result)  # print - fill the xlsx report
         if result > 90:
