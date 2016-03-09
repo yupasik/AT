@@ -9,13 +9,13 @@ from json import load, dump
 class Application:
 
     testcase = None
-    result = None
 
     def __init__(self, test, testintex, testscript):
         self.domain = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         with open(os.path.join(self.domain, "Configuration", "config_test.json"), "r") as s:
             config_test = load(s)
         self.test = test
+        self.result = None
         self.testintex = testintex
         self.testscript = testscript
         self.stb = uSTB(self)
