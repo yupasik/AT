@@ -81,7 +81,7 @@ class Display:
 
 class FrameStorage:
 
-    result = None
+    compare_result = None
 
     def __init__(self, app):
         self.app = app
@@ -89,7 +89,7 @@ class FrameStorage:
         with open(os.path.join(self.app.domain, "Configuration", "config_syst.json")) as info:
             self._chip = load(info)["CHIP"][self.app.stb_model]
         self._reference_dir = os.path.join(self.app.domain, "RefPictures", self._chip, self.app.test, self.app.testscript)
-        self.result = None
+        self.compare_result = None
 
     def set(self, ret, frame):
         if ret:
@@ -134,7 +134,7 @@ class FrameStorage:
                 copy(test_picture, os.path.join(self.app.report_dir, "%s_%s.bmp" % (self.app.testscript, testcase)))
                 cv2.imwrite(os.path.join(self.app.report_dir, "%s_%s_dif.jpg" % (self.app.testscript, testcase)), dif)
             except:
-                self.result = result
+                self.compare_result = result
                 return
         self.app.write_log("[GRAB]  Check the comparison result: %s" % conclusion)  # logger - check the comparison result: SUCCESS/FAILED
         print("[GRAB]  Check the comparison result: %s" % conclusion)  # print - check the comparison result: SUCCESS/FAILED
@@ -144,7 +144,7 @@ class FrameStorage:
                             result=conclusion)
         self.app.write_log("[EXCEL] Fill the xlsx report")  # logger - fill the xlsx report
         print("[EXCEL] Fill the xlsx report")  # print - fill the xlsx report
-        self.result = result
+        self.compare_result = result
 
 
 class Capture:

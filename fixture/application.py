@@ -15,7 +15,6 @@ class Application:
         with open(os.path.join(self.domain, "Configuration", "config_test.json"), "r") as s:
             config_test = load(s)
         self.test = test
-        self.result = None
         self.testintex = testintex
         self.testscript = testscript
         self.stb = uSTB(self)
