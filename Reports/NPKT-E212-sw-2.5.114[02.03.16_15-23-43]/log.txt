@@ -629,3 +629,17 @@
 10.03.2016 12:22:04 - [GRAB]  Take DUT_snapshot.bmp for testcase 3
 10.03.2016 12:22:04 - [GRAB]  Result = 0
 10.03.2016 12:22:04 - [GRAB]  Turn off Grabber. Stop capturing
+10.03.2016 12:27:16 - START test_script1
+10.03.2016 12:27:16 - [GRAB]  Launch Grabber. Start capturing
+10.03.2016 12:28:21 - [UART]  Reset STB to default settings
+10.03.2016 12:28:21 - [UART]  Push [exit]
+10.03.2016 12:28:22 - [GRAB]  Take DUT_snapshot.bmp for testcase 1
+10.03.2016 12:28:22 - [GRAB]  Result = 0
+10.03.2016 12:28:22 - [UART]  Push [menu]
+10.03.2016 12:28:27 - [GRAB]  Take DUT_snapshot.bmp for testcase 2
+10.03.2016 12:28:27 - [GRAB]  Result = 0
+10.03.2016 12:28:27 - [UART]  Push [ok]
+10.03.2016 12:28:32 - [UART]  Push [ok]
+10.03.2016 12:28:34 - [GRAB]  Take DUT_snapshot.bmp for testcase 3
+10.03.2016 12:28:34 - [GRAB]  Result = 0
+10.03.2016 12:28:34 - [GRAB]  Turn off Grabber. Stop capturing

@@ -151,4 +151,4 @@ class Modulator:
               "modulation - %s" % (dvb, fec, frequency, symbolrate, modulation))  # print - Set Modulator parameters
 
     def close_session(self):
-        self.client.service.OpenSession()
+        self.client.service.CloseSession()
