@@ -1,4 +1,4 @@
-from Devices.application import Application
+from fixture.application import Application
 import sys
 import pytest
 import allure
